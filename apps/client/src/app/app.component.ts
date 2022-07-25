@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {BehaviorSubject} from "rxjs";
+import {FormGroup} from "@angular/forms";
+
+import {FormlyFieldConfig} from '@ngx-formly/core';
 
 @Component({
   selector: 'cypress-firefox-flakiness-root',
@@ -8,14 +9,23 @@ import {BehaviorSubject} from "rxjs";
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  public formGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    something: new FormControl('', Validators.required),
-  });
-  public result = new BehaviorSubject<string | null>(null);
-
-  public handleSubmit(): void {
-    const {name, something} = this.formGroup.getRawValue();
-    this.result.next(`${name}:${something}`);
-  }
+  public formGroup = new FormGroup({});
+  public model = {name: '', urls: []};
+  public readonly formlyFields: Array<FormlyFieldConfig> = [
+    {
+      key: 'name',
+      type: 'input',
+      templateOptions: {
+        label: 'Name',
+        placeholder: 'name',
+        appearance: 'outline',
+        tabindex: 0,
+        required: true,
+        attributes: {'data-test-id': 'name-input'},
+      },
+      validation: {
+        show: false,
+      },
+    },
+  ];
 }

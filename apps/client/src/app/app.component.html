@@ -1,15 +1,9 @@
-<form [formGroup]="formGroup" (ngSubmit)="handleSubmit()">
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input matInput type="text" formControlName="name" data-test-id="nameInput">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Something</mat-label>
-    <input matInput type="text" formControlName="something" data-test-id="somethingInput">
-  </mat-form-field>
-  <button mat-stroked-button type="submit">submit</button>
+<h3>Let's see what this does...</h3>
+<form [formGroup]="formGroup">
+  <formly-form
+    [fields]="formlyFields"
+    [model]="model"
+    [options]="{}"
+    [form]="formGroup"
+  ></formly-form>
 </form>
-<p *ngIf="result | async as _result; else noResult">Result: {{_result}}</p>
-<ng-template #noResult>
-  <mat-hint>Give some values</mat-hint>
-</ng-template>
