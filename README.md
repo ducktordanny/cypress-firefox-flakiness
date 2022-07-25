@@ -14,7 +14,9 @@ In this repo I'm using Nx and Angular to be as close to what we have in our proj
 - Try to run cypress tests in headless mode in Chrome: `npx nx e2e client-e2e --browser chrome` (it should run without any issues)
 - Try the same with firefox: `npx nx e2e client-e2e --browser firefox` (it should throw an error `'cy.type()' failed because it targeted a disabled element.`)
 
-## Full error message
+## Screenshot & full error message
+
+![Failed test screenshot](./failed-test-screenshot.png)
 
 ```shell
 client
